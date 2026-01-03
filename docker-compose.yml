@@ -1,0 +1,13 @@
+services:
+  order-management-mongodb:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+      - MONGO_INITDB_DATABASE=om-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - om-db-data:/data/mongodb
+volumes:
+  om-db-data:
