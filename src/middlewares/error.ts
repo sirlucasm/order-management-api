@@ -10,7 +10,15 @@ export const errorMiddleware = (
 ) => {
   let error = { ...err };
 
-  const errorResponse = new ErrorResponse(error.message, error.statusCode);
+  const errorResponse = new ErrorResponse(
+    error.message || "Internal server error",
+    error.statusCode || 500,
+    err
+  );
 
-  res.status(errorResponse.statusCode).json(errorResponse.serializeErrors());
+  console.error(err);
+
+  res
+    .status(errorResponse.statusCode || 500)
+    .json(errorResponse.serializeErrors());
 };

@@ -1,13 +1,9 @@
 import express from "express";
+import { loginUserController, registerUserController } from "./controller";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json({
-    status: "running",
-    env: process.env.NODE_ENV,
-    version: process.env.npm_package_version,
-  });
-});
+router.post("/register", registerUserController);
+router.post("/login", loginUserController);
 
 export default router;

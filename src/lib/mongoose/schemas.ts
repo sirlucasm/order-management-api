@@ -31,11 +31,9 @@ userSchema.pre("save", async function () {
   }
 
   this.password = await bcrypt.hash(this.password, 12);
-
-  await this.save();
 });
 
-export type User = mongoose.InferSchemaType<typeof userSchema>;
+export type UserType = mongoose.InferSchemaType<typeof userSchema>;
 export const User = mongoose.model("User", userSchema);
 
 export const orderSchema = new mongoose.Schema(
@@ -85,5 +83,5 @@ export const orderSchema = new mongoose.Schema(
   }
 );
 
-export type Order = mongoose.InferSchemaType<typeof orderSchema>;
+export type OrderType = mongoose.InferSchemaType<typeof orderSchema>;
 export const Order = mongoose.model("Order", orderSchema);
