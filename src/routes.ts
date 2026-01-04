@@ -4,7 +4,7 @@ import express from "express";
 
 const router = express.Router();
 
-const routesGroup = ["auth"];
+const routesGroup = fs.readdirSync(path.join(process.cwd(), "src", "modules"));
 
 for (const group of routesGroup) {
   const routeModule = await import(
