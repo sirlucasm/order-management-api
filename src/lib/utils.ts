@@ -1,3 +1,5 @@
+import type { OrderType } from "./mongoose/schemas";
+
 export type SuccessResponse<T = any> = {
   message: string;
   data: T;
@@ -70,4 +72,15 @@ export const createPagination = ({
     nextPage: nextPage > pagesTotal ? undefined : nextPage,
     previousPage: previousPage < 1 ? undefined : previousPage,
   };
+};
+
+export const advanceOrderState = (state: OrderType["state"]) => {
+  switch (state) {
+    case "CREATED":
+      return "ANALYSIS";
+    case "ANALYSIS":
+      return "COMPLETED";
+    default:
+      return state;
+  }
 };

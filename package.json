@@ -6,13 +6,16 @@
   "private": true,
   "scripts": {
     "start": "bun run index.ts",
-    "dev": "docker compose up -d && bun run --watch index.ts"
+    "dev": "docker compose up -d && bun run --watch index.ts",
+    "test": "vitest"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.2.0",
     "@types/bun": "latest",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
-    "@types/jsonwebtoken": "^9.0.10"
+    "@types/jsonwebtoken": "^9.0.10",
+    "vitest": "^4.0.16"
   },
   "peerDependencies": {
     "typescript": "^5"
@@ -27,3 +30,4 @@
     "zod": "^4.3.4"
   }
 }
+

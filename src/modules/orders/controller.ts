@@ -1,5 +1,9 @@
 import { createOrderDto } from "./dto";
-import { createOrderService, getOrdersService } from "./services";
+import {
+  advanceOrderStateService,
+  createOrderService,
+  getOrdersService,
+} from "./services";
 import type { Request, Response } from "express";
 
 export const createOrderController = async (req: Request, res: Response) => {
@@ -24,4 +28,17 @@ export const getOrdersController = async (req: Request, res: Response) => {
   });
 
   res.json(orders);
+};
+
+export const advanceOrderStateController = async (
+  req: Request,
+  res: Response
+) => {
+  const { id } = req.params;
+
+  const response = await advanceOrderStateService({
+    orderId: id as string,
+  });
+
+  res.json(response);
 };
